@@ -1,0 +1,20 @@
+.principal_ope{
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    border:  1px solid rgb(218, 216, 216) ;
+    padding: 10px;
+    max-width: 450px;
+}
+
+.pregunta{
+    text-align: center;    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:rgb(80, 0, 228) 
+}
+
+.box_respuestas{
+    padding-left: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
