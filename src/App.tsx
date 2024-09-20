@@ -1,5 +1,3 @@
-import { useContext, useState } from 'react'
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Login from './components/auth/Login'
 import Home from './components/game/Home'
@@ -22,9 +20,11 @@ function App() {
             </ProtectedRoute>
             } path='/' />
           <Route element={
+                <ProtectedRoute>
             <ControlOpe>
                 <Operaciones />
             </ControlOpe>
+            </ProtectedRoute>
             } path='/ope/:complejidad/:preg' />
         </Routes>
 

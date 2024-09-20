@@ -15,6 +15,7 @@ interface OperacionContextType {
     getPregunta:(nro_preg:number)=>EstructuraInfo|undefined
     getEnunciado:(nro_preg:number)=>string|undefined
     getOpciones:(nro_pregun:number)=>number[]|undefined 
+    setSelecion:(nro_preg:number , opcion:number)=>void 
   }
 
 
@@ -40,8 +41,12 @@ export  function ControlOpe({children}:OpeProviderProps){
     function getEnunciado(n:number) :string|undefined {
         return cal.getEnunciado(n)
     }
+
+    function setSelecion(a:number , b:number ) {
+        cal.setSelecion(a,b)
+    }
     return(
-        <opeContext.Provider value={{cal, generarEnunciado, getPregunta, getEnunciado, getOpciones}}>
+        <opeContext.Provider value={{cal, generarEnunciado, getPregunta, getEnunciado, getOpciones, setSelecion}}>
             {children}
         </opeContext.Provider>
     )    

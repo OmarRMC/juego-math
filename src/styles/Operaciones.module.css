@@ -15,6 +15,16 @@
 
 .box_respuestas{
     padding-left: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;    
+}
+
+.btnAuxi{
+    display: none;
+}
+
+
+.alerta{
+    bottom: 10px;
+    right: 10px;
+    box-shadow: 1px 1px 5px rgb(119, 119, 119) ;
 }

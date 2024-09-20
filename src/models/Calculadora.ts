@@ -32,6 +32,12 @@ export default  class Calculadora{
     }
 
     /**
+     * getSeleccionado
+     */
+    public getSeleccionado(nro_preg:number):number|undefined {
+        return this.Preguntas.get(nro_preg)?.select
+    }
+    /**
      * name
      */
     public getOpciones(nro_pregun:number):number[]|undefined {
@@ -40,8 +46,10 @@ export default  class Calculadora{
 
     public generarEnunciado(nro_preg:number, ope:string):{enunciado:string, respuesta:number[]}{
         const a:number =parseInt((Math.random()*(10**this.complejidad))+""); 
-        const b:number =parseInt((Math.random()*(10**this.complejidad))+""); 
-        
+        let b:number =parseInt((Math.random()*(10**this.complejidad))+""); 
+        if(ope=="/" && b==0){
+            b=1 ; 
+        }
         let enunciado:string=a+ope+b; 
         const solucion=this.getOperacion(a,ope,b);
         console.log(enunciado, solucion)
@@ -56,7 +64,6 @@ export default  class Calculadora{
             }else {
                 respuesta.add(option); 
             }
-            console.log(respuesta)
         }
         if(!respuesta.has(solucion)){
             respuesta.delete(option); 
@@ -73,6 +80,14 @@ export default  class Calculadora{
     }
     
 
+    /**
+     * setSelecion
+     */
+    public setSelecion(nro_preg:number , opcion:number) {
+        const auxi = this.Preguntas.get(nro_preg)
+        if(auxi)
+            this.Preguntas.set(nro_preg, {...auxi,"select":opcion})
+    }
     public getOperacion(a:number,ope:string,b:number):number {
 
         switch (ope) {
