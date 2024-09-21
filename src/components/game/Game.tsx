@@ -1,4 +1,4 @@
-import { Badge, Col, Container, Image, ListGroup, ProgressBar, Row } from "react-bootstrap";
+import { Col, Container, Image, ListGroup, ProgressBar, Row } from "react-bootstrap";
 import { useAuth } from "../../context/AuthContext"
 
 import style from '../../styles/Game.module.css'

@@ -18,7 +18,7 @@ export default function Operaciones() {
     let aux_preg: number = parseInt(preg ?? "1");
     let aux_complejidad: number = parseInt(complejidad ?? "1");
     const referencia=  useRef<HTMLButtonElement>(null);
-    const {cal, generarEnunciado,  setSelecion, getPromedio ,NewCaculadora}=useCal()
+    const {cal, generarEnunciado,  setSelecion, getPromedio }=useCal()
 
     const {setDatosUser} = useAuth(); 
 

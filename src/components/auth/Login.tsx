@@ -13,7 +13,7 @@ import Loading from "../Loading";
     const [txtPass, setTxtPass] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(false);
-    const { auth, login } = useAuth();
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     const  handleLogin =async (event: React.FormEvent) => {

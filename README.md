@@ -1,50 +1,34 @@
-# React + TypeScript + Vite
+# Math Game - React & TypeScript
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Descripción
 
-Currently, two official plugins are available:
+Este proyecto es un **juego de matemáticas** desarrollado con **React** y **TypeScript**. El objetivo es permitir a los usuarios practicar operaciones matemáticas, como **suma**, **resta**, **multiplicación** y **división**, que se vuelven más complejas a medida que se avanza en los niveles. El juego incluye cuatro niveles de dificultad:
+- **Básico**: Operaciones simples de suma y resta.
+- **Intermedio**: Multiplicación y división básicas.
+- **Avanzado**: Combinación de operaciones más difíciles.
+- **Pro**: Problemas matemáticos avanzados y combinados.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+El juego ofrece autenticación de usuarios, con contraseñas encriptadas utilizando **bcryptjs** y almacenamiento de datos de usuario en **LocalStorage**.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- **Autenticación de usuarios**: Los usuarios pueden registrarse e iniciar sesión. Las contraseñas se almacenan de forma segura mediante bcryptjs.
+- **Sistema de niveles**: Cuatro niveles de dificultad, donde las operaciones matemáticas se complican conforme se avanza.
+- **Operaciones matemáticas**: Suma, resta, multiplicación y división.
+- **Persistencia de datos**: Los datos de los usuarios y el progreso se almacenan en LocalStorage.
+- **Interfaz de usuario responsiva**: Utilizando **Bootstrap** para asegurar que la aplicación funcione en múltiples dispositivos.
 
-- Configure the top-level `parserOptions` property like this:
+## Tecnologías utilizadas
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **React**: Biblioteca principal para la interfaz de usuario.
+- **TypeScript**: Para el tipado estático y asegurar la robustez del código.
+- **Bootstrap**: Para crear una interfaz de usuario responsiva y atractiva.
+- **bcryptjs**: Para la encriptación de contraseñas.
+- **LocalStorage**: Para guardar los datos del usuario y su progreso en el navegador.
+- **Vite**: Herramienta de construcción rápida y moderna.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## Instalación y ejecución
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+1. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/math-game.git

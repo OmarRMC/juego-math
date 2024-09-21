@@ -18,7 +18,7 @@ export default function CreateAccount() {
         const pass1 = form.pass1.value;
         const pass2 = form.pass2.value;
         
-            if(await crear_cuenta(usuario, pass1, pass1, nombre, apellido)){
+            if(await crear_cuenta(usuario, pass1, pass2, nombre, apellido)){
                 navigate("/")
             }else {
                 setError(true)
