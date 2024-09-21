@@ -12,7 +12,7 @@ import Footer from './components/game/Footer'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/juego-math'>
       <AuthProvider>
       <ControlOpe>
         <Routes>
