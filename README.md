@@ -32,3 +32,5 @@ El juego ofrece autenticación de usuarios, con contraseñas encriptadas utiliza
 1. Clona el repositorio:
    ```bash
    git clone https://github.com/OmarRMC/juego-math.git
+   cd juego-math
+   npm run dev 
