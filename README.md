@@ -1,5 +1,5 @@
 # Math Game - React & TypeScript
-
+<a href="https://omarrmc.github.io/juego-math" target="_blank">Visita la página</a>
 ## Descripción
 
 Este proyecto es un **juego de matemáticas** desarrollado con **React** y **TypeScript**. El objetivo es permitir a los usuarios practicar operaciones matemáticas, como **suma**, **resta**, **multiplicación** y **división**, que se vuelven más complejas a medida que se avanza en los niveles. El juego incluye cuatro niveles de dificultad:
