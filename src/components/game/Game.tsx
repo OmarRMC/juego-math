@@ -56,7 +56,7 @@ export default function Game() {
                     >
                         <div className="ms-2 me-auto">
                             <div className="fw-bold">Nivel Basico</div>                            
-                            <ProgressBar now={ auth?auth.nivel[1]:0} label={`${auth?auth.nivel[1]:0}%`}  animated/>
+                            <ProgressBar variant="success" now={ auth?auth.nivel[1]:0} label={`${auth?auth.nivel[1]:0}%`}  animated/>
                         </div>                        
                     </ListGroup.Item>
                     <ListGroup.Item
@@ -65,7 +65,7 @@ export default function Game() {
                     >
                         <div className="ms-2 me-auto">
                             <div className="fw-bold">Nivel intermedio</div>
-                            <ProgressBar now={auth?auth.nivel[2]:0} label={`${auth?auth.nivel[2]:0}%`}  animated/>
+                            <ProgressBar variant="warning" now={auth?auth.nivel[2]:0} label={`${auth?auth.nivel[2]:0}%`}  animated/>
                         </div>                        
                     </ListGroup.Item>
                     <ListGroup.Item
@@ -74,7 +74,7 @@ export default function Game() {
                     >
                         <div className="ms-2 me-auto">
                         <div className="fw-bold">Nivel Avanzado</div>
-                        <ProgressBar now={auth?auth.nivel[3]:0} label={`${auth?auth.nivel[3]:0}%`}  animated/>
+                        <ProgressBar variant="info" now={auth?auth.nivel[3]:0} label={`${auth?auth.nivel[3]:0}%`}  animated/>
                         </div>                        
                     </ListGroup.Item>
                     <ListGroup.Item

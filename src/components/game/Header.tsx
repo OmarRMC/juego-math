@@ -10,8 +10,8 @@ function Header() {
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark">
-        <Container>
-          <Navbar.Brand href="/">Math</Navbar.Brand>
+        <Container>          
+          <Link to="/" className='me-3 text-light' ><strong>Math</strong></Link>            
           <Nav className="me-auto d-flex align-items-center gap-3">            
               <Link to="/Perfil"> Perfil</Link>            
               <Link to="/Revision"> Ultima revision</Link>            
