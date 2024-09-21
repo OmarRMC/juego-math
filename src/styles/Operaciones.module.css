@@ -28,3 +28,20 @@
     right: 10px;
     box-shadow: 1px 1px 5px rgb(119, 119, 119) ;
 }
+.radio_btn {
+    padding: 5px;
+    
+}
+.radio_btn > label{
+    display: block;
+    width: 100%;
+    cursor: pointer;
+}
+.radio_btn  input[type=radio]{
+    margin: 0px;
+}
+
+.radio_btn:hover{
+  background: rgb(201, 201, 201) ;
+  border-radius: 5px;
+}

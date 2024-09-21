@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { useAuth } from '../../context/AuthContext';
+import { Link } from 'react-router-dom';
 
 function Header() {
   const {salir, auth}= useAuth();
@@ -10,12 +11,12 @@ function Header() {
     <>
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Math</Navbar.Brand>
-          <Nav className="me-auto">
-            <Nav.Link href="#home">Perfil</Nav.Link>
-            <Nav.Link href="#features">Puntuaciones</Nav.Link>
+          <Navbar.Brand href="/">Math</Navbar.Brand>
+          <Nav className="me-auto d-flex align-items-center gap-3">            
+              <Link to="/Perfil"> Perfil</Link>            
+              <Link to="/Revision"> Ultima revision</Link>            
           </Nav>
-          <Navbar.Brand href="#home">{auth?.nombre}</Navbar.Brand>
+          <Navbar.Brand href="#">{auth?.nombre}</Navbar.Brand>
           <Button onClick={salir}>Salir </Button>
         </Container>
       </Navbar>

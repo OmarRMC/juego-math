@@ -4,32 +4,34 @@ import { Alert, Badge, Button, Col, Container, Form, ListGroup, Row } from "reac
 
 import style from "../../styles/Operaciones.module.css"
 import { useEffect, useRef, useState } from "react";
-import Calculadora from "../../models/Calculadora";
 import { useCal } from "../../context/ControlOpe";
-
+import { useAuth } from "../../context/AuthContext";
 
 export default function Operaciones() {
-
-
     const [enunciado, setEnenunciado] = useState<string>(""); 
     const [opciones, setOpciones] = useState<number[]>([])
     const [seleccionado ,setSelecionado ] = useState<number|undefined>(); 
     const [error , setError] = useState<boolean>(false); 
-
+    const  navigate= useNavigate()
+    
     let { complejidad, preg } = useParams<{ complejidad: string, preg: string }>();
     let aux_preg: number = parseInt(preg ?? "1");
-    let auxi_compl=parseInt(complejidad??"1")
+    let aux_complejidad: number = parseInt(complejidad ?? "1");
     const referencia=  useRef<HTMLButtonElement>(null);
-    const {cal, generarEnunciado, getPregunta, getEnunciado, getOpciones, setSelecion}=useCal()
+    const {cal, generarEnunciado,  setSelecion, getPromedio ,NewCaculadora}=useCal()
 
+    const {setDatosUser} = useAuth(); 
 
-    const  navigate= useNavigate()
-
+    if(cal) {
+        cal.setComplejidad=aux_complejidad; 
+    }
+     
     function verifica_next(){
         referencia.current?.click(); 
     }
 
     function prueba() {        
+        navigate("/")        
     }
 
     function getOperaciones(n:number ):string {
@@ -45,6 +47,7 @@ export default function Operaciones() {
             return "+"
         }
     }
+    
     useEffect(()=>{
         if(cal?.getEnunciado(aux_preg)){
             setEnenunciado(cal.getEnunciado(aux_preg)??"...")
@@ -65,23 +68,29 @@ export default function Operaciones() {
         console.log(selectedOption);
         if(selectedOption){
             setError(false)
-            const auxi_select = parseInt(selectedOption)
+            const auxi_select = Number(selectedOption)                
             setSelecion(aux_preg, auxi_select)
-            console.log(cal)
-            navigate(`/ope/${complejidad}/${aux_preg < 20 ? aux_preg + 1 : aux_preg}`)            
+            console.log(cal)            
+            if(aux_preg==20){
+                const auxi_pro=getPromedio()
+                setDatosUser(aux_complejidad, auxi_pro);                     
+               navigate("/Revision"); 
+            }else {
+               navigate(`/ope/${complejidad}/${aux_preg < 20 ? aux_preg + 1 : aux_preg}`)            
+            }
         } else {
             setError(true)
         }        
     };
 
     function ok(evet:React.ChangeEvent<HTMLInputElement>) {
-        setSelecionado(parseInt(evet.target.value))
+        setSelecionado(Number(evet.target.value))
     }
     return (
         <>
             <Header></Header>
             <div className="p-5">
-                <h3>Pregunta {preg}</h3>
+                <h3>Pregunta {preg}  -  Nivel {aux_complejidad}</h3>
                 <Container>
                     <Row>
                         <Col sm={4} className="mt-3">
@@ -142,7 +151,7 @@ export default function Operaciones() {
                                 <h2 className={style.pregunta}>¿ {enunciado} ?</h2>
                                 <p>Seleccione:</p>
                                 <Form onSubmit={next}>
-                                    <div className={`mb-3 d-flex flex-column ${style.box_respuestas}`}>
+                                    <div className={`mb-3 d-flex flex-column  ${style.box_respuestas}`}>
                                         {
                                             opciones.map((e) =>
                                                 <Form.Check
@@ -155,6 +164,7 @@ export default function Operaciones() {
                                                     key={e}
                                                     checked={seleccionado !== null && seleccionado !== undefined ? seleccionado === e : false} // Comparar correctamente incluso si seleccionado es 0
                                                     onChange={ok}
+                                                    className={style.radio_btn+ " d-flex gap-2  align-items-center"}
                                                 />
                                             )
                                         }
@@ -180,7 +190,7 @@ export default function Operaciones() {
                         }                        
                     </Button>
                 </div>
-                <Button  variant="dark" onClick={prueba}> Volver al Menu </Button>
+                <Button className="m-auto" variant="dark" onClick={prueba}> Volver al Menu </Button>
             </div>
         </>
     )

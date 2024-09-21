@@ -16,6 +16,9 @@ interface OperacionContextType {
     getEnunciado:(nro_preg:number)=>string|undefined
     getOpciones:(nro_pregun:number)=>number[]|undefined 
     setSelecion:(nro_preg:number , opcion:number)=>void 
+    getPromedio:()=>number
+    getPreguntas:()=>Map<number,EstructuraInfo>
+    NewCaculadora:(nivel:number )=>void 
   }
 
 
@@ -38,6 +41,10 @@ export  function ControlOpe({children}:OpeProviderProps){
         return cal.getOpciones(n)
     }
 
+    function NewCaculadora(nivel:number) {
+        setCal(new Calculadora(nivel))
+    }
+
     function getEnunciado(n:number) :string|undefined {
         return cal.getEnunciado(n)
     }
@@ -45,8 +52,16 @@ export  function ControlOpe({children}:OpeProviderProps){
     function setSelecion(a:number , b:number ) {
         cal.setSelecion(a,b)
     }
+
+    function getPromedio():number {
+        return cal.getPromedio; 
+    }
+
+    function getPreguntas(){
+        return cal.getPreguntas
+    }
     return(
-        <opeContext.Provider value={{cal, generarEnunciado, getPregunta, getEnunciado, getOpciones, setSelecion}}>
+    <opeContext.Provider value={{cal, generarEnunciado, getPregunta, getEnunciado, getOpciones, setSelecion, getPromedio, getPreguntas, NewCaculadora}}>
             {children}
         </opeContext.Provider>
     )    

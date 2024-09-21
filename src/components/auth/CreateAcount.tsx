@@ -17,13 +17,13 @@ export default function CreateAccount() {
         const apellido = form.apellido.value;
         const pass1 = form.pass1.value;
         const pass2 = form.pass2.value;
-        console.log({ usuario, nombre, apellido, pass1, pass2 });
-        //user: string, pass1: string, pass2: string, nombre: string, apellido?: string
-        if(await crear_cuenta(usuario, pass1, pass1, nombre, apellido)){
-            navigate("/")
-        }else {
-            setError(true)
-        } 
+        
+            if(await crear_cuenta(usuario, pass1, pass1, nombre, apellido)){
+                navigate("/")
+            }else {
+                setError(true)
+            } 
+        
     }
 
     return (

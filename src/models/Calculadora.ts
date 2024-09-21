@@ -16,6 +16,12 @@ export default  class Calculadora{
     }
 
     
+    public set setComplejidad(v : number) {
+        this.complejidad = v;
+    }
+    
+
+    
     public get getComplejidad() : number {
         return  this.complejidad
     }
@@ -44,6 +50,34 @@ export default  class Calculadora{
         return this.Preguntas.get(nro_pregun)?.opciones; 
     }
 
+
+    
+    public get getPreguntas() {
+        return this.Preguntas; 
+    }
+    
+    
+    public get getPromedio() : number {
+        let correctos = 0 ; 
+        let caltidad=20; 
+        
+        this.Preguntas.forEach((data, pos)=>{
+            
+            let { select,solucion }=data 
+            if(select && solucion){                
+                if(select==solucion){
+                    correctos++; 
+                }
+            }
+             console.log(pos, select, solucion, select==solucion)
+            
+        })
+
+        
+        caltidad=correctos*100/caltidad        
+        return Number(caltidad.toFixed(2));  
+    }
+    
     public generarEnunciado(nro_preg:number, ope:string):{enunciado:string, respuesta:number[]}{
         const a:number =parseInt((Math.random()*(10**this.complejidad))+""); 
         let b:number =parseInt((Math.random()*(10**this.complejidad))+""); 
@@ -100,7 +134,8 @@ export default  class Calculadora{
                 return a*b ; 
             
             case "/":
-                    return a/b ; 
+                let auxi=a/b 
+                return parseFloat(auxi.toFixed(2)) ; 
             
             default:
                 return -1; 

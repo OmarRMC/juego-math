@@ -3,3 +3,33 @@
     height: 100%;
     object-fit: cover;
 }
+
+.principal{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    justify-content: center;
+    min-width:500px;
+}
+
+.principal_puntuacion{
+    position: relative;
+    max-width: 250px;
+   
+}
+.principal_puntuacion >ol> li div  {
+    display: block;
+    width: 100%;
+    
+}
+@media screen and (max-width: 650px) {
+   
+
+    .resposivo{
+        flex-direction: column;
+        gap: 40px;
+        min-height: auto !important;
+    }   
+
+}

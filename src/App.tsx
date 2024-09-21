@@ -6,29 +6,40 @@ import ProtectedRoute from './components/auth/ProtecRoute'
 import CreateAcount from './components/auth/CreateAcount'
 import Operaciones from './components/game/Operaciones'
 import { ControlOpe } from './context/ControlOpe'
+import Perfil from './components/game/Perfil'
+import Revision from './components/game/Revision'
+import Footer from './components/game/Footer'
 
 function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+      <ControlOpe>
         <Routes>
           <Route element={<Login />} path='/login' />
           <Route element={<CreateAcount />} path='/new_acount' />
           <Route element={
             <ProtectedRoute>
-            <Home />
+              <Home />
             </ProtectedRoute>
-            } path='/' />
+          } path='/' />
           <Route element={
-                <ProtectedRoute>
-            <ControlOpe>
-                <Operaciones />
-            </ControlOpe>
+            <ProtectedRoute>              
+                <Operaciones />              
             </ProtectedRoute>
-            } path='/ope/:complejidad/:preg' />
+          } path='/ope/:complejidad/:preg' />
+          <Route
+          element={<Revision/>}
+          path='/Revision'
+           >
+          </Route>
+          <Route element={
+              <Perfil />
+          } path='/Perfil'></Route>
         </Routes>
-
+        </ControlOpe>
       </AuthProvider>
+      <Footer></Footer>
     </BrowserRouter>
   )
 }

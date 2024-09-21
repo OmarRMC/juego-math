@@ -19,6 +19,7 @@ interface AuthContextType {
     login: (a: string, b: string) => Promise<boolean>
     crear_cuenta: (user: string, pass1: string, pass2: string, nombre: string, apellido?: string) => Promise<boolean>
     salir: () => boolean
+    setDatosUser:(pos:number , valor:number)=> void 
     //setAuth: React.Dispatch<React.SetStateAction<Usuario | undefined>>;
 }
 
@@ -58,6 +59,17 @@ function AuthProvider({ children }: AuthProviderProps) {
         }
         return false
     }
+    function  setDatosUser(pos:number , valor:number):void{
+        if(auth){
+            let {nivel} = auth
+            if(nivel){
+                nivel[pos]=valor 
+                localStorage.setItem(auth.user, JSON.stringify({...auth, nivel }))            
+            }
+            
+        }
+         
+    }
 
     const salir = (): boolean => {
         localStorage.setItem("user-activo", "");
@@ -68,9 +80,9 @@ function AuthProvider({ children }: AuthProviderProps) {
     const crear_cuenta = async (user: string, pass1: string, pass2: string, nombre: string, apellido?: string): Promise<boolean> => {
         if (pass1 == pass2) {
             const passHas = await hashPassword(pass1)
-            localStorage.setItem(user, JSON.stringify({ user, password: passHas, nombre, apellido, nivel: [], autenticado: true }));
+            localStorage.setItem(user, JSON.stringify({ user, password: passHas, nombre, apellido, nivel: [0,0,0,0,0], autenticado: true }));
             localStorage.setItem("user-activo", user);
-           setAuth({ user, password: passHas, nombre, apellido, nivel: [], autenticado: true })
+           setAuth({ user, password: passHas, nombre, apellido, nivel: [0,0,0,0,0], autenticado: true })
             return true
         }
         return false
@@ -85,7 +97,7 @@ function AuthProvider({ children }: AuthProviderProps) {
         }
     }, []);
     return (
-        <authContext.Provider value={{ auth, login, crear_cuenta, salir }}>
+        <authContext.Provider value={{ auth, login, crear_cuenta, salir , setDatosUser}}>
             {children}
         </authContext.Provider>
     );
