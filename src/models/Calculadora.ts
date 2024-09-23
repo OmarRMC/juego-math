@@ -59,23 +59,17 @@ export default  class Calculadora{
     
     public get getPromedio() : number {
         let correctos = 0 ; 
-        let caltidad=20; 
-        
-        this.Preguntas.forEach((data, pos)=>{
-            
-            let { select,solucion }=data 
-            if(select && solucion){                
-                if(select==solucion){
-                    correctos++; 
+        let caltidad=20;         
+        this.Preguntas.forEach((data, pos)=>{            
+            let { select ,solucion }=data 
+            if(select!==null && solucion!== null){                
+                if(select===solucion){
+                    correctos++;             
                 }
             }
-             console.log(pos, select, solucion, select==solucion)
-            
         })
-
-        
-        caltidad=correctos*100/caltidad        
-        return Number(caltidad.toFixed(2));  
+        let promedio=correctos*100/caltidad        
+        return Number(promedio.toFixed(2));  
     }
     
     public generarEnunciado(nro_preg:number, ope:string):{enunciado:string, respuesta:number[]}{

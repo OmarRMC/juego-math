@@ -57,6 +57,7 @@ export default function Operaciones() {
             const auxi =generarEnunciado(aux_preg, getOperaciones(aux_preg))
             setEnenunciado(auxi.enunciado)
             setOpciones(auxi.respuesta)      
+            setSelecionado((e)=>undefined); 
         }
         
     },[preg])
@@ -82,7 +83,6 @@ export default function Operaciones() {
             setError(true)
         }        
     };
-
     function ok(evet:React.ChangeEvent<HTMLInputElement>) {
         setSelecionado(Number(evet.target.value))
     }
@@ -90,6 +90,7 @@ export default function Operaciones() {
         <>
             <Header></Header>
             <div className="p-5">
+            <Button className="m-auto" variant="dark"  onClick={prueba}> Volver al Menu </Button>
                 <h3>Pregunta {preg}  -  Nivel {aux_complejidad}</h3>
                 <Container>
                     <Row>
@@ -103,9 +104,6 @@ export default function Operaciones() {
                                         <div className="fw-bold">Suma</div>
                                         Acertados
                                     </div>
-                                    <Badge bg="primary" pill>
-                                        0
-                                    </Badge>
                                 </ListGroup.Item>
                                 <ListGroup.Item
                                     as="li"
@@ -115,9 +113,6 @@ export default function Operaciones() {
                                         <div className="fw-bold">Resta</div>
                                         Acertados
                                     </div>
-                                    <Badge bg="primary" pill>
-                                        0
-                                    </Badge>
                                 </ListGroup.Item>
 
                                 <ListGroup.Item
@@ -127,10 +122,7 @@ export default function Operaciones() {
                                     <div className="ms-2 me-auto">
                                         <div className="fw-bold">Multiplicacion</div>
                                         Acertados
-                                    </div>
-                                    <Badge bg="primary" pill>
-                                        0
-                                    </Badge>
+                                    </div>                                    
                                 </ListGroup.Item>
                                 <ListGroup.Item
                                     as="li"
@@ -139,10 +131,7 @@ export default function Operaciones() {
                                     <div className="ms-2 me-auto">
                                         <div className="fw-bold">Division</div>
                                         Acertados
-                                    </div>
-                                    <Badge bg="primary" pill>
-                                        0
-                                    </Badge>
+                                    </div>                                    
                                 </ListGroup.Item>
                             </ListGroup>
                         </Col>
@@ -176,7 +165,8 @@ export default function Operaciones() {
                     error
                     &&
                     <Alert className={`position-absolute   d-block m-auto mt-3 ${style.alerta}`} style={{width:250}} variant="info">Seleccione al<strong> menos uno</strong>
-                    </Alert>}
+                    </Alert>
+                    }
                         </Col>
                     </Row>
                 </Container>
@@ -190,7 +180,7 @@ export default function Operaciones() {
                         }                        
                     </Button>
                 </div>
-                <Button className="m-auto" variant="dark" onClick={prueba}> Volver al Menu </Button>
+                
             </div>
         </>
     )

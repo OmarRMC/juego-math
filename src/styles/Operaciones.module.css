@@ -24,10 +24,28 @@
 
 
 .alerta{
-    bottom: 10px;
-    right: 10px;
+    position: absolute;
     box-shadow: 1px 1px 5px rgb(119, 119, 119) ;
+    left: -500px;    
+    bottom: 10px;
+    animation: animacion-alerta 6s ease-in-out  1 forwards;
+
 }
+@keyframes animacion-alerta {
+    0%{
+        left: -500px;
+    }
+    40%{
+        left: 10px;
+    }
+    60%{
+        left: 10px;
+    }
+    100%{
+        left: -500px;
+    }
+}
+
 .radio_btn {
     padding: 5px;
     
