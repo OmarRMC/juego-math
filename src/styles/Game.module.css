@@ -23,13 +23,35 @@
     width: 100%;
     
 }
-@media screen and (max-width: 650px) {
-   
-
+@media screen and (max-width: 750px) {
     .resposivo{
         flex-direction: column;
         gap: 40px;
         min-height: auto !important;
     }   
 
+    .principal{
+        
+        width: 100%;
+    }
+    .principal > div {
+        width: 70%;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    
+    .principal{
+        gap: 0px;
+    }
+    .principal > div {
+        margin: auto;
+        flex-direction: column;
+        width: 100%;
+        
+    }
+    .principal > div > div  {
+     margin: auto;
+    }
 }

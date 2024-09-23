@@ -60,7 +60,7 @@ export default  class Calculadora{
     public get getPromedio() : number {
         let correctos = 0 ; 
         let caltidad=20;         
-        this.Preguntas.forEach((data, pos)=>{            
+        this.Preguntas.forEach((data)=>{            
             let { select ,solucion }=data 
             if(select!==null && solucion!== null){                
                 if(select===solucion){

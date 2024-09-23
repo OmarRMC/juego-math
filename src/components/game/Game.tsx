@@ -25,24 +25,24 @@ export default function Game() {
     return (
         <div style={{ background: "#A0AFFF", minHeight:"90vh" }} className="d-flex flex-column p-2" >
             <h3 className="ms-4 mt-4">Niveles y puntuaciones </h3>
-            <Container className={`d-flex align-items-center justify-content-center  m-auto ${style.resposivo}`} style={{ minHeight: "70vh", maxWidth:"750px" }}>
+            <Container className={`d-flex align-items-center justify-content-center gap-5 m-auto ${style.resposivo}`} style={{ minHeight: "70vh", maxWidth:"750px" }}>
                 <Col className={`${style.principal}`}>
-                <Row style={{ height: 200 }} className="justify-content-center">
-                    <Col style={{ maxWidth: 250 }} onClick={() => ope(1)}>
+                <Row style={{ height: "50%" }} className="justify-content-center">
+                    <Col style={{ width:"50%"}} onClick={() => ope(1)}>
                         <Image src={`${img1}`} width={"100%"} rounded data-text="Basico" />
                         <p>Basico</p>
                     </Col>
-                    <Col style={{ maxWidth: 250 }} onClick={() => ope(2)}>
+                    <Col style={{width: "50%"}} onClick={() => ope(2)}>
                         <Image src={`${img1}`} width={"100%"} rounded />
                         <p>Intermedio</p>
                     </Col>
                 </Row>
-                <Row style={{ height: 200 }} className="justify-content-center">
-                    <Col style={{ maxWidth: 250 }} onClick={() => ope(3)}>
+                <Row style={{ height: "50%" }} className="justify-content-center">
+                    <Col style={{ width: "50%" }} onClick={() => ope(3)}>
                         <Image src={`${img1}`} width={"100%"} rounded />
                         <p>Avanzado</p>
                     </Col>
-                    <Col style={{ maxWidth: 250 }} onClick={() => ope(4)}>
+                    <Col style={{ width:"50%"}} onClick={() => ope(4)}>
                         <Image src={`${img1}`} width={"100%"} rounded />
                         <p>Final</p>
                     </Col>                    

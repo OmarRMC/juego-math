@@ -22,7 +22,6 @@
     display: none;
 }
 
-
 .alerta{
     position: absolute;
     box-shadow: 1px 1px 5px rgb(119, 119, 119) ;
@@ -35,10 +34,10 @@
     0%{
         left: -500px;
     }
-    40%{
+    20%{
         left: 10px;
     }
-    60%{
+    80%{
         left: 10px;
     }
     100%{

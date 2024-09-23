@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import Header from "./Header";
-import { Alert, Badge, Button, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
+import { Alert,  Button, Col, Container, Form, ListGroup, Row } from "react-bootstrap";
 
 import style from "../../styles/Operaciones.module.css"
 import { useEffect, useRef, useState } from "react";
@@ -57,7 +57,7 @@ export default function Operaciones() {
             const auxi =generarEnunciado(aux_preg, getOperaciones(aux_preg))
             setEnenunciado(auxi.enunciado)
             setOpciones(auxi.respuesta)      
-            setSelecionado((e)=>undefined); 
+            setSelecionado(undefined); 
         }
         
     },[preg])
