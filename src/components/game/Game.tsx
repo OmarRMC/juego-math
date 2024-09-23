@@ -4,6 +4,10 @@ import { useAuth } from "../../context/AuthContext"
 import style from '../../styles/Game.module.css'
 
 import img1 from "../../assets/img-1.jpg"
+import nivel1 from "../../assets/nivel1.jpg"
+import nivel2 from "../../assets/nivel2.jpg"
+import nivel3 from "../../assets/nivel3.jpg"
+
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useCal } from "../../context/ControlOpe";
@@ -28,23 +32,23 @@ export default function Game() {
             <Container className={`d-flex align-items-center justify-content-center gap-5 m-auto ${style.resposivo}`} style={{ minHeight: "70vh", maxWidth:"750px" }}>
                 <Col className={`${style.principal}`}>
                 <Row style={{ height: "50%" }} className="justify-content-center">
-                    <Col style={{ width:"50%"}} onClick={() => ope(1)}>
-                        <Image src={`${img1}`} width={"100%"} rounded data-text="Basico" />
-                        <p>Basico</p>
+                    <Col style={{ width:"50%"}}  onClick={() => ope(1)}>
+                        <Image src={`${nivel1}`} width={"100%"} rounded data-text="Basico" />
+                        <p className="text-center"><strong>Basico</strong></p>
                     </Col>
-                    <Col style={{width: "50%"}} onClick={() => ope(2)}>
-                        <Image src={`${img1}`} width={"100%"} rounded />
-                        <p>Intermedio</p>
+                    <Col style={{width: "50%"}} className={auth?(auth.nivel[1]>=51?"":style.bloqueado):""} onClick={() => ope(2)}>
+                        <Image src={`${nivel2}`} width={"100%"} rounded />
+                        <p className="text-center"><strong>Intermedio</strong></p>
                     </Col>
                 </Row>
                 <Row style={{ height: "50%" }} className="justify-content-center">
-                    <Col style={{ width: "50%" }} onClick={() => ope(3)}>
-                        <Image src={`${img1}`} width={"100%"} rounded />
-                        <p>Avanzado</p>
+                    <Col style={{ width: "50%" }} className={auth?(auth.nivel[2]>=51?"":style.bloqueado):""} onClick={() => ope(3)}>
+                        <Image src={`${nivel3}`} width={"100%"} rounded />
+                        <p className="text-center"><strong>Avanzado</strong></p>
                     </Col>
-                    <Col style={{ width:"50%"}} onClick={() => ope(4)}>
+                    <Col style={{ width:"50%"}} className={auth?(auth.nivel[3]>=51?"":style.bloqueado):""} onClick={() => ope(4)}>
                         <Image src={`${img1}`} width={"100%"} rounded />
-                        <p>Final</p>
+                        <p className="text-center"><strong>Pro</strong></p>
                     </Col>                    
                 </Row>
             </Col>

@@ -8,6 +8,7 @@ import { useCal } from "../../context/ControlOpe";
 import { useAuth } from "../../context/AuthContext";
 
 export default function Operaciones() {
+    const [tiempo, setTiempo]= useState<boolean>(false); 
     const [enunciado, setEnenunciado] = useState<string>(""); 
     const [opciones, setOpciones] = useState<number[]>([])
     const [seleccionado ,setSelecionado ] = useState<number|undefined>(); 
@@ -86,13 +87,51 @@ export default function Operaciones() {
     function ok(evet:React.ChangeEvent<HTMLInputElement>) {
         setSelecionado(Number(evet.target.value))
     }
+    useEffect(()=>{
+        const elementContador= document.querySelector("."+style.contador); 
+        function funcion_contador(contador:number) {
+            let minutos
+            if(contador<0){
+                clearInterval(id_interval)
+                setTiempo(true)
+            }else {                
+                if(elementContador != null )
+                {
+                    minutos= Math.floor(contador/60 ); 
+                    contador=contador%60
+                    elementContador.innerHTML=`${String(minutos).padStart(2, '0')}:${String(contador).padStart(2, '0')}`
+                }
+            }
+            
+        }
+        let minutos:number=600
+        if (aux_complejidad==4) {
+            minutos=300 
+        }        
+        const id_interval=setInterval(() => {
+           funcion_contador(minutos);
+           minutos--;  
+           console.log(minutos);
+           
+        }, 1000);
+
+        return ()=>{
+            clearInterval(id_interval); 
+        }
+    }, [])
+
     return (
         <>
             <Header></Header>
             <div className="p-5">
-            <Button className="m-auto" variant="dark"  onClick={prueba}> Volver al Menu </Button>
+            <Button className="m-auto" variant={tiempo?"danger":"dark"}  onClick={prueba}> {tiempo?"Reiniciar el Juego":"Volver al Menu"} </Button>
                 <h3>Pregunta {preg}  -  Nivel {aux_complejidad}</h3>
-                <Container>
+                {
+                    aux_complejidad>=3?
+                    <div> Tiempo : <strong className={style.contador}>10:00</strong> </div> 
+                    :""
+                }
+                <Container  className={tiempo?style.contanedor_all:""}>
                     <Row>
                         <Col sm={4} className="mt-3">
                             <ListGroup as="ol" numbered>
@@ -170,7 +209,7 @@ export default function Operaciones() {
                         </Col>
                     </Row>
                 </Container>
-                <div className=" mt-3 d-flex gap-5" style={{justifyContent:"space-evenly"}}>
+                <div className={`mt-3 d-flex gap-5  ${tiempo?style.contanedor_btn:""}`} style={{justifyContent:"space-evenly"}}>
                     <Button >
                         <Link to={`/ope/${complejidad}/${(aux_preg > 1) ? aux_preg - 1 : 1}`} className="text-light">Prev</Link>
                     </Button>                

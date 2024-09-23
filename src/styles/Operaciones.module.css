@@ -62,3 +62,14 @@
   background: rgb(201, 201, 201) ;
   border-radius: 5px;
 }
+
+.contador{
+    color: red;
+}
+
+.contanedor_all,.contanedor_btn{    
+    pointer-events: none;
+}
+.contanedor_btn  {
+    visibility: hidden;
+}
