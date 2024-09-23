@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+
 import { useCal } from "../../context/ControlOpe";
 import { Container, Table } from "react-bootstrap";
 import Header from "./Header";
@@ -9,9 +9,6 @@ export default function Revision() {
     const { cal } = useCal()
 
 
-    useEffect(() => {
-        console.log(cal)
-    })
     return (
         <>
             <Header></Header>

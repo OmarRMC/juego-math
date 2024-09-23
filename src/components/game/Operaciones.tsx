@@ -67,12 +67,12 @@ export default function Operaciones() {
         const form = event.currentTarget;    
         const selectedInput = form.querySelector('input[name="options"]:checked') as HTMLInputElement | null;    
         const selectedOption = selectedInput ? selectedInput.value : null; 
-        console.log(selectedOption);
+        //console.log(selectedOption);
         if(selectedOption){
             setError(false)
             const auxi_select = Number(selectedOption)                
             setSelecion(aux_preg, auxi_select)
-            console.log(cal)            
+            //console.log(cal)            
             if(aux_preg==20){
                 const auxi_pro=getPromedio()
                 setDatosUser(aux_complejidad, auxi_pro);                     
@@ -111,7 +111,7 @@ export default function Operaciones() {
         const id_interval=setInterval(() => {
            funcion_contador(minutos);
            minutos--;  
-           console.log(minutos);
+           //console.log(minutos);
            
         }, 1000);
 
@@ -128,7 +128,7 @@ export default function Operaciones() {
                 <h3>Pregunta {preg}  -  Nivel {aux_complejidad}</h3>
                 {
                     aux_complejidad>=3?
-                    <div> Tiempo : <strong className={style.contador}>10:00</strong> </div> 
+                    <div> Tiempo : <strong className={style.contador}>..:..</strong> </div> 
                     :""
                 }
                 <Container  className={tiempo?style.contanedor_all:""}>

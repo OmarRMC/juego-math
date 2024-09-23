@@ -80,7 +80,7 @@ export default  class Calculadora{
         }
         let enunciado:string=a+ope+b; 
         const solucion=this.getOperacion(a,ope,b);
-        console.log(enunciado, solucion)
+        //console.log(enunciado, solucion)
 
         let respuesta = new Set<number>(); 
         let option=0; 
@@ -102,7 +102,7 @@ export default  class Calculadora{
             {enunciado, 
             opciones:Array.from(respuesta),            
             solucion})
-        console.log(this.Preguntas)
+        //console.log(this.Preguntas)
 
         return {enunciado, respuesta:Array.from(respuesta)}
     }
