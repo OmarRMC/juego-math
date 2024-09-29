@@ -84,10 +84,14 @@ export default  class Calculadora{
 
         let respuesta = new Set<number>(); 
         let option=0; 
-        
         while(respuesta.size<5){
-            option=parseInt((Math.random()*(10**(this.complejidad+1)))+"");             
-            if( option > a && option<b){
+            if(ope =="/"){              
+                option=parseFloat((Math.random()*(10**(this.complejidad+1)))+"");                            
+                option = parseFloat(option.toFixed(2))
+            }else {
+                option=parseInt((Math.random()*(10**(this.complejidad+1)))+"");             
+            }
+            if( option < a && option<b){
                 respuesta.add(solucion) 
             }else {
                 respuesta.add(option); 
@@ -95,7 +99,10 @@ export default  class Calculadora{
         }
         if(!respuesta.has(solucion)){
             respuesta.delete(option); 
-            respuesta.add(solucion)
+            let pos=Math.floor(Math.random()*5)
+            let lista = [...respuesta]; 
+            lista.splice(pos,0, solucion)
+            respuesta= new Set(lista);             
         }
         
         this.Preguntas.set(nro_preg,
