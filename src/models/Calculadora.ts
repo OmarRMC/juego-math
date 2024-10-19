@@ -15,12 +15,9 @@ export default  class Calculadora{
         this.complejidad=complejidad; 
     }
 
-    
     public set setComplejidad(v : number) {
         this.complejidad = v;
     }
-    
-
     
     public get getComplejidad() : number {
         return  this.complejidad
@@ -59,7 +56,7 @@ export default  class Calculadora{
     
     public get getPromedio() : number {
         let correctos = 0 ; 
-        let caltidad=20;         
+        let caltidad=12;         
         this.Preguntas.forEach((data)=>{            
             let { select ,solucion }=data 
             if(select!==null && solucion!== null){                

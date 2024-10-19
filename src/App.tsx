@@ -9,34 +9,61 @@ import { ControlOpe } from './context/ControlOpe'
 import Perfil from './components/game/Perfil'
 import Revision from './components/game/Revision'
 import Footer from './components/game/Footer'
+import Estadisticas from './components/game/Estadisticas'
+import Usuarios from './components/game/Usuarios'
 
 function App() {
   return (
     <BrowserRouter basename='/juego-math/'>
       <AuthProvider>
-      <ControlOpe>
-        <Routes>
-          <Route element={<Login />} path='/login' />
-          <Route element={<CreateAcount />} path='/new_acount' />
-          <Route element={
-            <ProtectedRoute>
-              <Home />
-            </ProtectedRoute>
-          } path='/' />
-          <Route element={
-            <ProtectedRoute>              
-                <Operaciones />              
-            </ProtectedRoute>
-          } path='/ope/:complejidad/:preg' />
-          <Route
-          element={<Revision/>}
-          path='/Revision'
-           >
-          </Route>
-          <Route element={
+        <ControlOpe>
+          <Routes>
+            <Route element={<Login />} path='/login' />
+            <Route element={<CreateAcount />} path='/new_acount' />
+            <Route element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            } path='/' />
+            <Route element={
+              <ProtectedRoute>
+                <Operaciones />
+              </ProtectedRoute>
+            } path='/ope/:complejidad/:preg' />
+            <Route
+              element={
+                <ProtectedRoute>
+                  <Revision />
+                </ProtectedRoute>
+              }
+              path='/Revision'
+            >
+            </Route>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <Estadisticas />
+                </ProtectedRoute>
+              }
+              path='/Estadisticas'
+            >
+
+            </Route>
+            <Route
+              element={
+                <ProtectedRoute>
+                  <Usuarios />
+                </ProtectedRoute>
+              }
+              path='/Usuarios'
+            ></Route>
+
+            <Route element={
               <Perfil />
-          } path='/Perfil'></Route>
-        </Routes>
+            } path='/Perfil'></Route>
+
+
+          </Routes>
         </ControlOpe>
       </AuthProvider>
       <Footer></Footer>

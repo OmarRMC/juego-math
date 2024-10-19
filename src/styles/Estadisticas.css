@@ -1,0 +1,20 @@
+/* styles.css o un archivo CSS correspondiente */
+.chart-tooltip {
+    display: none !important; /* Oculta cualquier tooltip */
+  }
+
+  .box_grafica{
+    margin:50px  auto;
+
+  }
+
+  .ocultar{
+    display: none;
+  }
+
+  .content_graficos{    
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 80vh;
+    align-items: center;
+  }

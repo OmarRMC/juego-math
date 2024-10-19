@@ -36,13 +36,13 @@ export default function Operaciones() {
     }
 
     function getOperaciones(n:number ):string {
-        if(n<=5){
+        if(n<=3){
             return "+"            
-        }else if(n<=10){
+        }else if(n<=6){
             return "-"            
-        }else if(n<=15){
+        }else if(n<=9){
             return "*"            
-        }else if(n<=20){
+        }else if(n<=12){
             return "/"            
         }else {
             return "+"
@@ -73,12 +73,12 @@ export default function Operaciones() {
             const auxi_select = Number(selectedOption)                
             setSelecion(aux_preg, auxi_select)
             //console.log(cal)            
-            if(aux_preg==20){
+            if(aux_preg==12){
                 const auxi_pro=getPromedio()
                 setDatosUser(aux_complejidad, auxi_pro);                     
-               navigate("/Revision"); 
+                navigate("/Revision"); 
             }else {
-               navigate(`/ope/${complejidad}/${aux_preg < 20 ? aux_preg + 1 : aux_preg}`)            
+               navigate(`/ope/${complejidad}/${aux_preg < 12 ? aux_preg + 1 : aux_preg}`)            
             }
         } else {
             setError(true)
@@ -215,7 +215,7 @@ export default function Operaciones() {
                     </Button>                
                     <Button  variant="success"  onClick={verifica_next}>                        
                         {
-                            aux_preg==20?"Finalizar":"Next"
+                            aux_preg==12?"Finalizar":"Next"
                         }                        
                     </Button>
                 </div>

@@ -7,16 +7,21 @@ import { Link } from 'react-router-dom';
 
 function Header() {
   const {salir, auth}= useAuth();
+  
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" style={{minHeight:"70px"}} data-bs-theme="dark">
         <Container>          
           <Link to="/" className='me-3 text-light' ><strong>Math</strong></Link>            
           <Nav className="me-auto d-flex align-items-center gap-3">            
-              <Link to="/Perfil"> Perfil</Link>            
-              <Link to="/Revision"> Ultima revision</Link>            
+              <Link to="/Perfil"> Perfil</Link>                          
+              <Link to="/Estadisticas"> Estadisticas</Link>            
+              {
+                (auth?.rol==1)&&
+                <Link to="/Usuarios"> Usuarios </Link> 
+              }
           </Nav>
-          <Navbar.Brand href="#">{auth?.nombre}</Navbar.Brand>
+          <Navbar.Brand href="#">{auth?.user}</Navbar.Brand>
           <Button onClick={salir}>Salir </Button>
         </Container>
       </Navbar>

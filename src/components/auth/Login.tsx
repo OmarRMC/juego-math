@@ -2,26 +2,29 @@ import { Alert, Button, Form } from "react-bootstrap"
 import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-
+import Spinner from 'react-bootstrap/Spinner';
 
 
 
 import Loading from "../Loading";
 
-    function Login() {
+function Login() {
     const [txtUser, setTxtUser] = useState<string>("");
     const [txtPass, setTxtPass] = useState<string>("");
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<boolean>(false);
-    const { login } = useAuth();
+    const { login, iniciando } = useAuth();
     const navigate = useNavigate();
+    const [proces_check,setProces_check ] = useState<boolean>(false); 
 
-    const  handleLogin =async (event: React.FormEvent) => {
+    const handleLogin = async (event: React.FormEvent) => {
         event.preventDefault()
+        setProces_check(true); 
         console.log("Datos Guardados...")
         if (await login(txtUser, txtPass)) {
             navigate("/");
         } else {
+            setProces_check(false); 
             setError(true)
         }
     };
@@ -29,19 +32,15 @@ import Loading from "../Loading";
     const crearCuenta = () => {
         navigate("/new_acount")
     }
-    const verificado=async ()=>{
-        const dataInfo = localStorage.getItem("user-activo")
-        if (dataInfo) {
-            const datos_actuales= localStorage.getItem(dataInfo); 
-            const {autenticado} = datos_actuales&&JSON.parse(datos_actuales)
-            if (autenticado) {
-                navigate("/")
-            }
+    const verificado = async () => {
+        const autenticado = await iniciando();
+        if (autenticado) {
+            navigate("/")
         }
         setLoading(false)
     }
     useEffect(() => {
-        verificado(); 
+        verificado();
     }, [])
 
     return (
@@ -68,7 +67,17 @@ import Loading from "../Loading";
                             </Form.Group>
 
                             <div className="d-flex justify-content-center gap-3">
-                                <Button type="submit" variant="primary">Iniciar</Button>
+                                <Button type="submit" variant="primary">
+                                {proces_check&&
+                                    <Spinner
+                                        as="span"
+                                        animation="grow"
+                                        size="sm"
+                                        role="status"
+                                        aria-hidden="true"
+                                    />}
+
+                                    Iniciar</Button>
                                 <Button variant="secondary" onClick={crearCuenta}>Crear Cuenta</Button>
                             </div>
                         </Form>

@@ -1,0 +1,20 @@
+.contanier_alerta{
+   top:0; 
+   position: fixed;
+   background: rgba(37, 37, 37, 0.26);
+   width: 100vw;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+
+}
+
+.alerta{
+   padding:20px 10px ;
+   max-width: 300px;   
+   background: white;
+   max-height: 250px;
+   border-radius: 5px;
+   
+}
